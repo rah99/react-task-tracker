@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+// import React from 'react'
+import { useState } from 'react'
+import Header from './components/Header';
+import Tasks from './components/Tasks';
 
+// Function based
 function App() {
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      text: 'Vet Appointment',
+      day: 'Feb 5th at 2:30pm',
+      reminder: true,
+    },
+    {
+      id: 2,
+      text: 'Meeting at School',
+      day: 'Feb 6th at 12:30pm',
+      reminder: true,
+    },
+    {
+      id: 3,
+      text: 'Food Shopping',
+      day: 'Feb 5th at 4:30pm',
+      reminder: false,
+    }
+  ])
+
+  // Delete task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : 'There are no tasks to display!'}
     </div>
   );
 }
+
+// // Class based - need to "import React from 'react'"
+// class App extends React.Component {
+//   render() {
+//     return <h1>Hello from a class</h1>
+//   }
+// }
 
 export default App;

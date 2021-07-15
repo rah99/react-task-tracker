@@ -11,6 +11,12 @@
       "text": "Meeting at School",
       "day": "Feb 6th at 12:30pm",
       "reminder": true
+    },
+    {
+      "text": "Buy vape",
+      "day": "Friday 16th July 2021",
+      "reminder": true,
+      "id": 3
     }
   ]
 }

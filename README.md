@@ -1,3 +1,44 @@
+# To install and use this app:
+
+## Install dependencies
+
+```
+npm install
+```
+
+## Run React dev server via http://localhost:3000
+
+```
+npm start
+```
+
+## Run JSON server via http://localhost:5000
+
+```
+npm run server
+```
+
+### Alternatively change the React and JSON server ports in the "package.json" (React and JSON servers need to be different):
+
+#### Linux/MacOS
+
+```
+"start": “PORT=YOUR-PORT-NUMBER react-scripts start",
+"server": "json-server --watch db.json --port YOUR-PORT-NUMBER"
+```
+
+#### Windows
+
+```
+"start": "set PORT=YOUR-PORT-NUMBER && react-scripts start",
+"server": "json-server --watch db.json --port YOUR-PORT-NUMBER"
+```
+## Production build
+
+```
+npm run build
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,14 +1,14 @@
-// import React from 'react'
+// import React from 'react' // for class based
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Header from './components/Header';
-import About from './components/About';
-import Footer from './components/Footer';
-import Tasks from './components/Tasks';
-import AddTask from './components/AddTask';
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
+import About from './components/About'
 
 // Function based
-function App() {
+const App = () => {
   const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([])
 
@@ -17,6 +17,7 @@ function App() {
       const tasksFromServer = await fetchTasks()
       setTasks(tasksFromServer)
     }
+
     getTasks()
   }, [])
 
@@ -59,10 +60,13 @@ function App() {
 
   // Delete task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
       method: 'DELETE'
     })
-    setTasks(tasks.filter((task) => task.id !== id))
+    // Control the response status - change state or not
+    res.status === 200
+      ? setTasks(tasks.filter((task) => task.id !== id))
+      : alert('Error deleting task')
   }
 
   // Toggle reminder
